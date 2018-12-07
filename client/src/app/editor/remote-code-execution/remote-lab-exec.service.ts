@@ -220,9 +220,6 @@ export class RemoteLabExecService {
       .equalTo(kind)
       .limitToFirst(1)
       .childAdded()
-      .pipe(
-        take(1),
-        snapshotToValue
-      );
+      .pipe(take(1), snapshotToValue);
   }
 }

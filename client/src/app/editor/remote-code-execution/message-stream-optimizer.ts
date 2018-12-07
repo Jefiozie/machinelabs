@@ -41,10 +41,7 @@ export class MessageStreamOptimizer {
       .orderByChild('index')
       .limitToLast(1)
       .childAdded()
-      .pipe(
-        take(1),
-        snapshotToValue
-      );
+      .pipe(take(1), snapshotToValue);
   }
 
   getHeadMessages(executionId, partitionSize) {
@@ -54,10 +51,7 @@ export class MessageStreamOptimizer {
       .startAt(0)
       .limitToFirst(partitionSize)
       .childAdded()
-      .pipe(
-        take(partitionSize),
-        snapshotToValue
-      );
+      .pipe(take(partitionSize), snapshotToValue);
   }
 
   getTailMessages(executionId, startAt, partitionSize) {
@@ -67,10 +61,7 @@ export class MessageStreamOptimizer {
       .startAt(startAt)
       .limitToFirst(partitionSize)
       .childAdded()
-      .pipe(
-        take(partitionSize),
-        snapshotToValue
-      );
+      .pipe(take(partitionSize), snapshotToValue);
   }
 
   getLiveMessages(executionId, startAt) {

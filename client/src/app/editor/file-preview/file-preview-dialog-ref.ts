@@ -1,10 +1,7 @@
-import { OverlayRef, GlobalPositionStrategy } from '@angular/cdk/overlay';
-
+import { OverlayRef } from '@angular/cdk/overlay';
 import { Observable, Subject } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
-
 import { FilePreviewDialogComponent } from './file-preview-dialog/file-preview-dialog.component';
-import { OutputFile } from '../../models/output-file';
 
 export class FilePreviewDialogRef {
   private _beforeClose = new Subject<void>();
@@ -16,10 +13,7 @@ export class FilePreviewDialogRef {
 
   close(): void {
     this.containerInstance.animationStateChanged
-      .pipe(
-        filter(event => event.phaseName === 'start'),
-        take(1)
-      )
+      .pipe(filter(event => event.phaseName === 'start'), take(1))
       .subscribe(() => {
         this._beforeClose.next();
         this._beforeClose.complete();
@@ -27,10 +21,7 @@ export class FilePreviewDialogRef {
       });
 
     this.containerInstance.animationStateChanged
-      .pipe(
-        filter(event => event.phaseName === 'done' && event.toState === 'leave'),
-        take(1)
-      )
+      .pipe(filter(event => event.phaseName === 'done' && event.toState === 'leave'), take(1))
       .subscribe(() => {
         this.overlayRef.dispose();
         this._afterClosed.next();

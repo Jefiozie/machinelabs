@@ -27,14 +27,12 @@ export enum NavigationConfirmReason {
   `,
   styles: [
     `
-      :host {
-        display: block;
-        width: 500px;
-      }
+    :host {
+      display: block;
+      width: 500px;
+    }
 
-      p {
-        text-align: center;
-      }
+      p { text-align: center; }
     `
   ]
 })

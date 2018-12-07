@@ -55,7 +55,7 @@
     <mat-icon>info_outline</mat-icon>
     This execution has no output files.
   </ng-container>
-  <ng-container *ngIf="!outputFiles?.length && isExecuting">
+  <ng-container *ngIf="isExecuting">
     <mat-icon>info_outline</mat-icon>
     No output files yet, but hold tight, we are listening for them in realtime...
   </ng-container>
